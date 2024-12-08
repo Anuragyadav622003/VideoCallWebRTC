@@ -80,28 +80,85 @@ function Room() {
   }, []);
 
   return (
-    <div>
-      <h2>Video Call Room</h2>
-      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+    <div style={styles.container}>
+      <h2 style={styles.header}>Video Call Room</h2>
+      <div style={styles.videoContainer}>
         {/* Local Video */}
-        <div>
-          <h3>Your Video</h3>
-          <video ref={localVideoRef} autoPlay muted style={{ width: '300px', borderRadius: '10px' }} />
+        <div style={styles.videoWrapper}>
+          <h3 style={styles.videoLabel}>Your Video</h3>
+          <video ref={localVideoRef} autoPlay muted style={styles.video} />
         </div>
 
         {/* Remote Video */}
-        <div>
-          <h3>Remote Video</h3>
-          <video ref={remoteVideoRef} autoPlay style={{ width: '300px', borderRadius: '10px' }} />
+        <div style={styles.videoWrapper}>
+          <h3 style={styles.videoLabel}>Remote Video</h3>
+          <video ref={remoteVideoRef} autoPlay style={styles.video} />
         </div>
       </div>
 
       {/* End Call Button */}
-      <button onClick={endCall} style={{ marginTop: '20px', padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}>
+      <button onClick={endCall} style={styles.endCallButton}>
         End Call
       </button>
     </div>
   );
 }
+
+const styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '20px',
+    backgroundColor: '#f5f5f5',
+    borderRadius: '10px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    width: '80%',
+    maxWidth: '1200px',
+    margin: 'auto',
+  },
+  header: {
+    fontSize: '24px',
+    marginBottom: '20px',
+    color: '#333',
+    fontWeight: 'bold',
+  },
+  videoContainer: {
+    display: 'flex',
+    justifyContent: 'space-around',
+    width: '100%',
+    marginBottom: '20px',
+  },
+  videoWrapper: {
+    textAlign: 'center',
+    width: '45%',
+    borderRadius: '10px',
+    backgroundColor: '#fff',
+    padding: '10px',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+  },
+  videoLabel: {
+    fontSize: '18px',
+    marginBottom: '10px',
+    color: '#555',
+  },
+  video: {
+    width: '100%',
+    borderRadius: '10px',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+  },
+  endCallButton: {
+    marginTop: '20px',
+    padding: '12px 24px',
+    fontSize: '16px',
+    cursor: 'pointer',
+    backgroundColor: '#f44336',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '5px',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+    transition: 'background-color 0.3s ease',
+  },
+};
 
 export default Room;

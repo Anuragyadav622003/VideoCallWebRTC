@@ -7,7 +7,7 @@ export const useSocket = () => useContext(SocketContext);
 
 const SocketProvider = ({ children }) => {
   const socket = useMemo(() => {
-    return io('http://localhost:8001', {
+    return io('https://video-call-web-rtc-kappa.vercel.app/', {
       transports: ['websocket'],
       reconnection: true,
       reconnectionAttempts: 5,
